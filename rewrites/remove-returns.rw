@@ -1,0 +1,44 @@
+Parser: JSParser
+
+(
+-methodClasses
+)
+
+#isLastReturnInMethod: aReturnStatement
+	^ (aReturnStatement parentOfType: self methodClasses)
+		ifNil: [ false ]
+		ifNotNil: [ :method | method statements last == aReturnStatement ]!
+
+#isReturnNeeded: aReturnStatement
+	^ (aReturnStatement parentOfType: self methodClasses)
+		ifNil: [ true ]
+		ifNotNil: [ :method | 
+			| otherReturns |
+			otherReturns := OrderedCollection new.
+			method
+				allNodesOfType: JSReturnStatementNode
+				do: [ :ret | 
+					(ret ~~ aReturnStatement
+						and: [ (ret parentOfType: self methodClasses) == method ])
+						ifTrue: [ otherReturns add: ret ] ].
+			otherReturns isEmpty
+				or: [ otherReturns anySatisfy: [ :each | each expression notNil ] ] ]!
+
+"initialization"
+SmaCCParseNode
+[match parent isNil]
+->
+[self
+	methodClasses: {JSFunctionNode.
+			JSArrowFunctionNode.
+			JSMethodDefinitionNode.
+			JSMemberFunctionDeclarationNode}.
+self continue]
+
+JSReturnStatementNode
+[(self isLastReturnInMethod: match) and: [ (self isReturnNeeded: match) not ]]
+->
+[self continue.
+(match expression isNil or: [ match expression source = 'null' ])
+	ifTrue: [ self deleteWithWhitespaceBefore: match ]
+	ifFalse: [ self deleteWithWhitespaceAfter: match returnToken ]]
