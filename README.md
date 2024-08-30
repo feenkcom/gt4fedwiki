@@ -1,1 +1,1 @@
-## Installation```stMetacello new	repository: 'github://feenkcom/gt4fedwiki:master/src';	baseline: 'Gt4Fedwiki';	load```## Load Lepiter				After installing with Metacello, you will be able to execute```#BaselineOfGt4Fedwiki asClass loadLepiter```
+## Installation```stMetacello new	repository: 'github://feenkcom/gt4fedwiki:main/src';	baseline: 'Gt4Fedwiki';	load```## Load Lepiter				After installing with Metacello, you will be able to execute```#BaselineOfGt4Fedwiki asClass loadLepiter```
