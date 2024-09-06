@@ -263,6 +263,7 @@
 							},
 							"search" : "return ``?value{testBlock: \n\t[ :node | \r\t| classes |\r\tclasses := {JSFunctionNode.\r\t\t\tJSArrowFunctionNode.\r\t\t\tJSMethodDefinitionNode.\r\t\t\tJSMemberFunctionDeclarationNode}.\r\t(node ifNotNil: [node parentOfType: classes])\r\t\tifNil: [ false ]\r\t\tifNotNil: [ :method | \r\t\t\tmethod statements last == node parent\r\t\t\t\tand: [ | otherReturns |\r\t\t\t\t\totherReturns := OrderedCollection new.\r\t\t\t\t\tmethod\r\t\t\t\t\t\tallNodesOfType: JSReturnStatementNode\r\t\t\t\t\t\tdo: [ :ret | ret ~~ node parent ifTrue: [ otherReturns add: ret ] ].\r\t\t\t\t\totherReturns notEmpty\r\t\t\t\t\t\tand: [ otherReturns allSatisfy: [ :each | each expression isNil ] ] ] ] ]}`;",
 							"replace" : "",
+							"scope" : "#(#('directory' '') )",
 							"parser" : "JSParser",
 							"startingState" : "Statement"
 						}
@@ -375,6 +376,7 @@
 							},
 							"search" : "__guard__(``?obj`, ``?func`)",
 							"replace" : "",
+							"scope" : "#(#('directory' '') )",
 							"parser" : "JSParser",
 							"startingState" : "Expression"
 						},
@@ -974,6 +976,43 @@
 								"__type" : "textStyle"
 							},
 							"string" : "We can search for the pattern, but determining if it can be applied it difficult since JS is implicitly typed:"
+						},
+						{
+							"__type" : "SmaCCRewrite",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-08-29T10:27:57.247485-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-08-29T10:27:57.247485-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "05sq2zXdDQC/krMEBbvFSg=="
+							},
+							"search" : "``?value` != null",
+							"replace" : "",
+							"parser" : "JSParser",
+							"startingState" : "Expression"
 						}
 					]
 				},
@@ -1007,43 +1046,6 @@
 					"__type" : "textStyle"
 				},
 				"string" : "# DS207: Consider shorter variations of null checks"
-			},
-			{
-				"__type" : "SmaCCRewrite",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-08-29T10:27:57.247485-05:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-08-29T10:27:57.247485-05:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "05sq2zXdDQC/krMEBbvFSg=="
-				},
-				"search" : "``?value` != null",
-				"replace" : "",
-				"parser" : "JSParser",
-				"startingState" : "Expression"
 			}
 		]
 	},

@@ -151,6 +151,7 @@
 							},
 							"search" : "Array.from(``?arg`)",
 							"replace" : "`arg`",
+							"scope" : "#(#('directory' '') )",
 							"parser" : "JSParser",
 							"startingState" : "Expression"
 						}
@@ -263,6 +264,7 @@
 							},
 							"search" : "return ``?value{testBlock: \n\t[ :node | \r\t| classes |\r\tclasses := {JSFunctionNode.\r\t\t\tJSArrowFunctionNode.\r\t\t\tJSMethodDefinitionNode.\r\t\t\tJSMemberFunctionDeclarationNode}.\r\t(node ifNotNil: [node parentOfType: classes])\r\t\tifNil: [ false ]\r\t\tifNotNil: [ :method | \r\t\t\tmethod statements last == node parent\r\t\t\t\tand: [ | otherReturns |\r\t\t\t\t\totherReturns := OrderedCollection new.\r\t\t\t\t\tmethod\r\t\t\t\t\t\tallNodesOfType: JSReturnStatementNode\r\t\t\t\t\t\tdo: [ :ret | ret ~~ node parent ifTrue: [ otherReturns add: ret ] ].\r\t\t\t\t\totherReturns notEmpty\r\t\t\t\t\t\tand: [ otherReturns allSatisfy: [ :each | each expression isNil ] ] ] ] ]}`;",
 							"replace" : "",
+							"scope" : "#(#('directory' '') )",
 							"parser" : "JSParser",
 							"startingState" : "Statement"
 						}
@@ -375,6 +377,7 @@
 							},
 							"search" : "__guard__(``?obj`, ``?func`)",
 							"replace" : "",
+							"scope" : "#(#('directory' '') )",
 							"parser" : "JSParser",
 							"startingState" : "Expression"
 						},
@@ -449,6 +452,7 @@
 							},
 							"search" : "function __guard__(``?args{beList}`) { ``?statements{beList}` }",
 							"replace" : "",
+							"scope" : "#(#('directory' '') )",
 							"parser" : "JSParser",
 							"startingState" : "Expression"
 						}
@@ -561,6 +565,7 @@
 							},
 							"search" : "(``?var` = ``?obj`) != null ? ``?var` : ``?val`",
 							"replace" : "",
+							"scope" : "#(#('directory' '') )",
 							"parser" : "JSParser",
 							"startingState" : "Expression"
 						},
@@ -635,6 +640,7 @@
 							},
 							"search" : "``?var` = ``?obj{testBlock: [:node | (node parent parent isKindOf: JSExpressionNode) and: [node parent parent leftParens notEmpty]]}`",
 							"replace" : "",
+							"scope" : "#(#('directory' '') )",
 							"parser" : "JSParser",
 							"startingState" : "Expression"
 						}
@@ -710,6 +716,7 @@
 							},
 							"search" : "Object.keys(``?value` || {})",
 							"replace" : "",
+							"scope" : "#(#('directory' '') )",
 							"parser" : "JSParser",
 							"startingState" : "Expression"
 						}
@@ -785,6 +792,7 @@
 							},
 							"search" : "((``?var` = ``?value`), ``?obj`.includes(``?var`))",
 							"replace" : "",
+							"scope" : "#(#('directory' '') )",
 							"parser" : "JSParser",
 							"startingState" : "Expression"
 						}
@@ -897,6 +905,7 @@
 							},
 							"search" : "((``?a{beList}`) => ``?any{beList}`)(``?args{beList}`)",
 							"replace" : "",
+							"scope" : "#(#('directory' '') )",
 							"parser" : "JSParser",
 							"startingState" : "Expression"
 						}
@@ -1009,6 +1018,7 @@
 							},
 							"search" : "``?value` != null",
 							"replace" : "",
+							"scope" : "#(#('directory' '') )",
 							"parser" : "JSParser",
 							"startingState" : "Expression"
 						}
